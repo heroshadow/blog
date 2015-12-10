@@ -1,0 +1,141 @@
+<?php if(!defined('HDPHP_PATH'))exit;C('SHOW_NOTICE',FALSE);?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>订单提交成功</title>
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/css/cart.css"/>
+</head>
+<body class="newCartBody">
+	<div class="carHeader">
+		<div class="carHeaderCon clearfix">
+			<div class="logo fl">
+				<a href="http://127.0.0.1/my_shop/9.11converse/hdphp">
+					<img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/logo.png" width="30" height="70"/>
+				</a>
+			</div>
+			<div class="fr" >
+				<img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/c_19.jpg" alt="" width="350" height="70" />
+			</div>
+		</div>
+	</div>
+	<div class="center">
+		<div class="centerBox">
+			<div class="borderSoild">
+				<div class="borderSoild01">
+					
+				</div>
+			</div>
+			<div class="suc01 clearfix">
+				<div class="suc01Left">
+					<div class="sucList01">
+						<h2 class="sucText01">订单提交成功，请您尽快付款！</h2>
+						<h3 class="sucText02"><span class="color333 padRight10">订单号:<a href="" style="color: #C69C6D;cursor: pointer;font-size: 14px;font-family: Tahoma,sans-serif;">1014794442078</a></span><span>应付金额: <strong>10605.00元</strong></span></h3>
+						
+					</div>
+					<div class="sucList02">
+						<span>请您在1小时之内完成支付，否则订单会被自动取消。</span>
+					</div>
+					<p class="clearfix">
+						<a href="" class="fl a02">立即支付</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footerListTop clearfix">
+			<div class="listTopCon">
+				<div class="listTop01 fl">
+					<div class="topIcon">
+						<ul class="clearfix">
+							<li>
+								<a href=""></a>
+								<div class="topIconBg">
+									<p class="i01 pngfix"></p>
+									<p class="i01s pngfix"></p>
+								</div>
+								<div class="text">正品保障</div>
+							</li>
+							<li class="hr"></li>
+							<li>
+								<a href=""></a>
+								<div class="topIconBg">
+									<p class="i02 pngfix"></p>
+									<p class="i02s pngfix"></p>
+								</div>
+								<div class="text">七天退修</div>
+							</li>
+							<li class="hr"></li>
+							<li>
+								<a href=""></a>
+								<div class="topIconBg">
+									<p class="i03 pngfix"></p>
+									<p class="i03s pngfix"></p>
+								</div>
+								<div class="text">维修保养</div>
+							</li>
+							<li class="hr"></li>
+							<li>
+								<a href=""></a>
+								<div class="topIconBg">
+									<p class="i04 pngfix"></p>
+									<p class="i04s pngfix"></p>
+								</div>
+								<div class="text">权威保障</div>
+							</li>
+							<li class="hr"></li>
+							<li>
+								<a href=""></a>
+								<div class="topIconBg">
+									<p class="i05 pngfix"></p>
+									<p class="i05s pngfix"></p>
+								</div>
+								<div class="text">管家服务</div>
+							</li>
+							<li class="hr"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="listTop02 fl">
+					<ul class="clearfix">
+						<li>
+							<a href="" class="toptext">关注寺库微信</a>
+							<span class="weixinPic"><img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/weixin.jpg" alt="" / width="86" height="86"></span>
+							<a href="" class="bottomtext">扫一扫有惊喜</a>
+						</li>
+						<li>
+							<a href="" class="toptext">下载寺库APP</a>
+							<span class="weixinPic"><img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/app.jpg" alt="" / width="86" height="86"></span>
+							<a href="" class="bottomtext">扫一扫有惊喜</a>
+						</li>
+					</ul>
+				</div>
+				<div class="listTop03 fl">
+					<p style="height: 125px;margin: 15px auto 0px;">
+						<a href="">加入寺库</a>
+						<a href="">关于寺库</a>
+						<a href="">联系我们</a>
+						<a href="">支付方式</a>
+						<a href="">帮助中心</a>
+						<a href="">售后服务</a>
+						<a href="">免责声明</a>
+						<a href="">礼品采购</a>
+						<a href="">寺库微博</a>
+						<a href="">友情链接</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="footerListBottom">
+			<div class="footerListBottom01">
+				京ICP备09084709号-3 京公网安备110105004373号 
+				<a href=""><img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/foot_pic01.png" alt="" /></a>
+				<a href=""><img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/foot_pic02.png" alt="" /></a>
+				<a href=""><img src="http://127.0.0.1/my_shop/9.11converse/hdphp/Public/Index/images/gongshangju.png" alt="" /></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

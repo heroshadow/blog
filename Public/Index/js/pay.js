@@ -1,0 +1,16 @@
+$(function(){
+	$('.a02').click(function(){
+		$.ajax({
+			type:"post",
+			url:url,
+			data:{'oid':oid},
+			dataType:'json',
+			success:function(phpData){
+				if(phpData){
+					alert('支付成功');
+					location.href=root;
+				}
+			}
+		});
+	})
+})

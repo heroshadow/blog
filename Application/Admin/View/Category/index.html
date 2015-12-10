@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link rel="stylesheet" href="__ROOT__/Public/Bootstrap/Css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<form action="{:U('Common/sort')}" method="post">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>
+									分类ID
+								</th>
+								<th>
+									分类名称
+								</th>
+								<th>
+									排序
+								</th>
+								<th>
+									操作
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach from="$cate" value="$v" key="$k" >
+							<tr class="info" pid='{$v.pid}' <if value="$v['pid'] gt 0">style='display:none'</if>>
+								<td>
+									{$v.cid}
+								</td>
+								<td class='open' cid='{$v.cid}'>
+									{$v._name}
+								</td>
+								<td>
+									<input type="text" name='{$v.cid}' value='{$v.sort}'/>
+								</td>
+								<td>
+									<a href="{|U:'add', array('pid' => $v['cid'])}" class="btn btn-success"><i class="icon-edit icon-white"></i>添加子分类</a>
+									<a href="{|U:'edit', array('cid' => $v['cid'])}" class="btn btn-warning"><i class="icon-pencil icon-white"></i>修改</a>
+									<a href="{|U:'del', array('cid' => $v['cid'])}" class="btn btn-danger"><i class="icon-trash icon-white"></i>删除</a>
+								</td>
+							</tr>
+							</foreach>
+							<tr>
+								<td colspan='4' align='center'>
+									<input type="hidden" name='table' value='category' />
+									<input type="submit" value='排序' class="btn btn-primary"/>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>
+
+<script type="text/javascript">
+$(function(){
+	$('.open').toggle(function(){
+		var cid = $(this).attr('cid');
+		$('tr[pid=' + cid + ']').fadeIn(600);
+	}, function(){
+		var cid = $(this).attr('cid');
+		$('tr[pid=' + cid + ']').fadeOut(600);
+	});
+});
+</script>
+</body>
+</html>

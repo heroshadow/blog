@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__ROOT__/Public/Bootstrap/Css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__PUBLIC__/Css/common.css" />
+	<script type="text/javascript" src='__PUBLIC__/Js/jquery-1.7.2.min.js'></script>
+	<style type="text/css">
+		body{
+			margin-bottom: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+	<div class="row-fluid">
+	<div class="span12">
+
+
+	<form action="" method='post'>
+
+		<table class='table table-bordered table-hover'>
+			<tr>
+				<th>货品ID</th>
+
+				<foreach from="$spec" value="$v" key="$k">
+					<th>{$v.taname}</th>
+				</foreach>
+
+				<th>库存</th>
+				<th>货号</th>
+			</tr>
+
+		
+
+			<!-- 如果已添加数目小于可能情况数目，才出现添加货品的输入框 -->
+			
+			<tr class="info">
+				<td>修改</td>
+		
+				<foreach from="$spec" value="$v" key="$k">
+					<td>
+						<select name="spec[]">
+							<option value="0">-请选择-</option>
+							<foreach from="$v['opt']" value="$vv" key="$kk">
+								<option<if value="in_array($vv['gaid'],$oldData['merge']) ">selected</if> value="{$vv.gaid}">{$vv.gavalue}</option>
+							</foreach>
+						</select>
+					</td>
+				</foreach>
+
+
+				<td>
+					<input type="text" name='kucun' value="{$oldData.kucun}"/>
+				</td>
+				<td>
+					<input type="text" name='number' value="{$oldData.number}" />
+				</td>
+				<td></td>
+			</tr>
+		
+		</table>
+		<input type="hidden" name='gid' value='{$oldData.goods_gid}'/>
+		<input type="hidden" name='tid' value='{$hd.get.tid}'/>
+		<input type="hidden" name="glid" value="{$oldData.glid}" />
+		<input type="submit" value='修改' class="btn btn-primary"/>
+		</form>
+
+
+	</div>
+	</div>
+	</div>
+
+
+<script type="text/javascript">
+	var sel = $('select[name="spec[]"]');
+	var len = sel.length;
+	sel.change(function () {
+		var remote = {
+			'gid' : {$Think.get.gid},
+			'spec' : {}
+		};
+		for (var i = 0; i < len; ++i)
+		{
+			if (sel.eq(i).val() == 0)
+			{
+				return;
+			}
+			else
+			{
+				remote.spec[i] = sel.eq(i).val();
+			}
+		}
+		$.ajax({
+			url : '{:U("check")}',
+			type : 'get',
+			data : remote,
+			dataType : 'json',
+			success : function(data)
+			{
+				if (data == 0)
+				{
+					alert('货品已存在，如果要修改库存，请点击修改');
+					for (var i = 0; i < len; ++i)
+					{
+						sel.eq(i).val(0);
+					}
+				}
+			}
+		});
+	});
+</script>
+</body>
+</html>

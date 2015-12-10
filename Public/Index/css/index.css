@@ -1,0 +1,86 @@
+body,
+html,
+div,
+dl,
+dt,
+dd,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+input,
+textarea,
+p,
+th,
+td,
+a,
+img,
+span {
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+  font-family: tahoma, arial, 宋体, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+img {
+  vertical-align: middle;
+  border: 0px none;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+.rmb {
+  font-family: microsoft yahei;
+}
+ol,
+ul,
+li,
+dl,
+dd,
+dt {
+  list-style: outside none none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 12px;
+  font-weight: normal;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+em,
+b {
+  font-style: normal;
+  font-weight: normal;
+}
+.clearfix::after {
+  visibility: hidden;
+  display: block;
+  font-size: 0px;
+  content: " ";
+  clear: both;
+  height: 0px;
+}
+/*# sourceMappingURL=index.css.map */

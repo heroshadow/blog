@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>我的订单</title>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Public/Index/css/personal.css"/>
+	<include file="__VIEW__/Common/header"/>
+	<script src="__ROOT__/Public/Index/js/block.js" type="text/javascript" charset="utf-8"></script>
+	<!--头部-->
+	<div class="mySecooNew clearfix">
+		<div id="car_content">
+			<div class="mySecooNew_l">
+				<h2><a href="" class="my_secoo_a">我的寺库</a></h2>
+				<div class="line"></div>
+				<dl>
+					<dt>帐号中心</dt>
+					<dd><a href="" class="onhover">我的订单</a></dd>
+					<dd><a href="">账户信息</a></dd>
+					<dd><a href="">收货地址</a></dd>
+				</dl>
+			</div>
+			<!--右边部分-->
+			<div class="mySecooNew_r w870">
+				<table class="order_table order_table_md">
+					<colgroup>
+						<col class="goods"></col>
+						<col class="price"></col>
+						<col class="quantity"></col>
+						<col class="item-operate"></col>
+						<col class="amount"></col>
+						<col class="trade-status"></col>
+						<col class="trade-operate"></col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">商品</th>
+							<th scope="col" class="alignleft">商品</th>
+							<th scope="col">数量</th>
+							<th scope="col">商品操作</th>
+							<th scope="col">实付款</th>
+							<th scope="col">订单状态</th>
+							<th scope="col">操作</th>
+						</tr>
+					</thead>
+					<tbody class="">
+						<foreach from="$data" value="$v" key="$k">
+						<tr class="order_hd">
+							<td class="" colspan="7">
+								<div class="pos_r">
+									<span class="marRight_30">主订单号：{$v.number}</span>
+									<span>下单时间：{$v.time|date:'Y-m-d',@@}</span>
+									<a href="" class="deleteOrder"></a>
+								</div>
+							</td>
+						</tr>
+						<foreach from="$v['list']" value="$vv" key="$kk">
+						<tr class="last_tr">
+							<td class="norborder">
+								<dl class="order_dl">
+									<dt>
+										<a href="">
+											<img src="__ROOT__/{$vv.thumb}" alt="" />
+										</a>
+									</dt>
+									<dd>
+										<p class="p_name"><a href="">{$vv.name}</a></p>
+									</dd>
+								</dl>
+							</td>
+							<td class="norborder alignleft">
+								<span class="price_sk"><i>￥</i>{$vv.subtotal}</span>
+							</td>
+							<td class="norborder">{$vv.num}</td>
+							<td></td>
+							<td class="norborder" rowspan="1">
+								<span class="price_sk"><i>￥</i>{$vv.subtotal}</span>
+								<span class="dbk">在线支付</span>
+							</td>
+							<td class="norborder" rowspan="1" colspan="1">
+								<if value="$v['state']==1">
+								<span class="dbk color_red">已支付</span>
+								<else/>
+								<span class="dbk color_red">未支付</span>
+								<!--<a href="" class="dbk">订单详情</a>-->
+								</if>
+							</td>
+							<td class="last_td_r last_td_b" rowspan="1">
+								<if value="$v['state']==0">
+								<a href="{|U:'Pay/payFor',array('oid'=>$v['oid'])}" class="btn_red dbk">立即支付</a>
+								</if>
+								<a href="{|U:'Pay/cancle',array('oid'=>$v['oid'])}">取消订单</a>
+							</td>
+						</tr>
+						</foreach>
+						</foreach>
+					</tbody>
+				</table>
+			</div>
+			<!--右边部分-->
+		</div>
+	</div>
+	<!--底部-->
+	<include file="__VIEW__/Common/footer"/>
+	<!--底部end-->
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Public/Index/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Public/Index/css/register.css"/>
+</head>
+<body>
+	<div class="secondHeader">
+		<div class="secondHeaderCenter clearfix">
+			<div class="sheaderLeft fl">
+				<img src="__ROOT__/Public/Index/images/logo.png" alt="" />
+			</div>
+			<div class="sheaderRight fr">
+				<a href="">寺库首页</a>
+			</div>
+		</div>
+	</div>
+	<div class="bgcolor">
+		<form action="" method="post">
+		<div class="login_center clearfix">
+			<div class="login_in fr">
+				<h1>欢迎登录</h1>
+				<ul class="clearfix">
+					<li>
+						<div class="login_tips ltips01">
+							<input type="text"  class="in_style" border: 1px solid rgb(222, 222, 222); placeholder="邮箱" name="email"/>
+							<i class="picUser picUserClick"></i>
+						</div>
+					</li>
+					<li>
+						<div class="login_tips ltips02">
+							<input type="password"  class="in_style" border: 1px solid rgb(222, 222, 222); placeholder="密码" name="password"/>
+							<i class="picPassWord picUserClick"></i>
+						</div>
+					</li>
+					<li>
+						<label class="rememberMe">
+							<input type="checkbox" name=""  checked="" value="" />记住帐号
+						</label>
+					</li>
+				</ul>
+				<div class="btn_submit">
+					<input type="submit" class="input_sub login_btn" value="立即登录" id="input_sub"/>
+				</div>
+				<div class="msg clearfix">
+					<span class="fl">还不是寺库会员?<a href="{|U:'Member/register'}" class="active">免费注册</a></span>
+					<span class="fr"><a href="">忘记密码?</a></span>
+				</div>
+			</div>
+		</div>
+		</form>	
+	</div>
+	<include file="__VIEW__/Common/footer"/>
+</body>
+</html>

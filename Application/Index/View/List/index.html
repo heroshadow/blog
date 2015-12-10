@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>列表页</title>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Public/Index/css/list.css"/>
+	<include file="__VIEW__/Common/header"/>
+	<script src="__ROOT__/Public/Index/js/list.js" type="text/javascript" charset="utf-8"></script>
+	<!--搜索条件区域-->
+	<div class="clearfix" id="listPageContent">
+		<div class="pageTitle" id="pageTitle">
+			<span>共<b>{$count}</b>件商品</span>
+			<a href="__ROOT__">首页</a>
+			<em></em>
+			<list from="$fatherData" name="$n">
+				<if value="!$hd.list.n.last">
+					<a href="{|U:'List/index',array('cid'=>$n['cid'])}">{$n.cname}</a>
+					<em></em>
+				<else/>
+					<a href="{|U:'List/index',array('cid'=>$n['cid'])}"><h1>{$n.cname}</h1></a>
+				</if>
+			</list>
+		</div>
+		<div class="selectCondition" id="selectCondition" style="box-shadow: 0px 2px 5px #CCC;">
+			<!--<dl>
+				<dt>已选择:</dt>
+				<dd>
+					<div class="categoryDd">
+						<a href="" class="on">类目:包袋<i></i></a>
+						<a href="" class="on">手提包<i></i></a>
+					</div>
+				</dd>
+				<a href="" class="reset"><i></i>清除条件</a>
+			</dl>-->
+			<!--<dl class="brand_dl">
+				<dt>品牌:</dt>
+				<dd>
+					<div class="smallList brand">
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+						<a href="">PRADA/普拉达</a>
+					</div>
+					<div class="bigList"></div>
+				</dd>
+				<a href="" class="brandChoice">更多</a>
+				<a href="" class="brandmore">多选</a>
+			</dl>-->
+			<foreach from='$attr' value="$v" key="$k">
+					<?php
+						$temp = $param;
+						//全部为0的时候
+						$temp[$k] = 0;
+					?>
+			<dl>
+				<dt>{$v.name}</dt>
+				<dd>
+					<div class="smallList">
+						<a href="{|U:'index',array('cid'=>$_GET['cid'],'param'=>implode('-',$temp))}" <if value="$param[$k]==0">class="hover"</if> >全部</a>
+						<foreach from="$v['value']" key="$kk" value="$vv">
+							<?php 
+								$temp[$k]=$vv['gaid'];	
+							?>
+							
+							<a href="{|U:'index',array('cid'=>$_GET['cid'],'param'=>implode('-',$temp))}" <if value="$param[$k]==$vv['gaid']">class="hover"</if>>{$vv.gavalue}</a>
+						</foreach>
+					</div>
+				</dd>
+			</dl>
+			</foreach>
+		</div>
+	</div>
+	<!--搜索条件区域-->
+	<!--商品列表-->
+	<div class="product_box" style="box-shadow: 0px 2px 5px rgb(204, 204, 204);">
+		<div class="product_tips">
+			<a href="" class="on">商城(3601)</a>
+		</div>
+		<!--条件区-->
+		<div class="product_control" id="J_Filter">
+			<div class="product_control_btn">
+				<a href="" class="on">综合<i></i></a>
+				<a href="">人气<i></i></a>
+				<a href="">新品<i></i></a>
+				<a href="">销量<i></i></a>
+				<a href="">折扣<i></i></a>
+				<a href="">价格<i class="p"></i></a>
+			</div>
+			<div class="product_control_price">
+				<div>
+					<span>
+						<input type="text" />	
+					</span>
+					<i></i>
+					<span>
+						<input type="text" />	
+					</span>
+				</div>
+			</div>
+			<div class="product_control_page">
+				<a href="" class="page-prev off"><i></i></a>
+				<span><b>1</b> / 90</span>
+				<a href="" class="page-next"><i></i></a>
+			</div>
+		</div>
+		<!--条件区end-->
+		<!--商品区-->
+		<div class="commodity-list clearfix">
+			<if value="$goods">
+			<foreach from="$goods" value="$v" key="$k">
+			<dl class="">
+				<div class="show_tips">
+					<dt>
+						<a href="{|U:'Goods/index',array('gid'=>$v['gid'])}">
+							<img src="__ROOT__/{$v.listimg}" alt=""  width="240" height="240"/>
+						</a>
+						<strong class="sg"></strong>
+					</dt>
+					<dd class="dl_tips">
+						<span class="s2">直降</span>
+					</dd>
+					<dd class="dl_name">
+						<a href="{|U:'Goods/index',array('gid'=>$v['gid'])}" >{$v.gname}</a>
+					</dd>
+					<dd class="dl_price clearfix">
+						<span><i>￥</i>{$v.sprice}</span>
+						<del id>销量：<i>{$v.click}</i>件</del>
+					</dd>
+					<dd class="add_cart">
+						<a href="">加入购物车</a>
+					</dd>
+					<span class="loveHeart">
+						<i>收藏</i>
+					</span>
+				</div>
+			</dl>
+			</foreach>
+			<else/>
+			<div class="nothingSearch2 clearfix">
+				<p class="nts_title">很抱歉，没有找到符合条件的商品</p>
+				<p>建议您：</p>
+				<p>1、适当减少筛选条件，可以获得更多结果</p>
+				<p>2、变更商品品牌</p>
+				<p>3、调整价格区间</p>
+			</div>
+			</if>
+		</div>
+		<!--商品区end-->
+		<!--分页-->
+		<div class="product_page">
+			<!--{<a href="" class="prev off">上一页</a>
+			<a class="on">1</a>
+			<a >2</a>
+			<a href="" class="next off">下一页</a>}-->
+			{$page}
+		</div>
+		<!--分页end-->
+		<!--最近浏览-->
+		<!--<div class="product_more hide">
+			<div class="product_more_title J_more_tab">
+				<a href="" class="act">最近浏览 <i></i></a>
+			</div>
+			<div class="list-con">
+				<div class="product_more_list hide" style="display: block;">
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<a href="">
+								<img src="__ROOT__/Public/Index/images/12529024.jpg" alt="" width="160" height="160" style="display: inline;"/>
+							</a>
+						</dt>
+						<dd class="dl_pm_name">
+							<a href="">KENZO/高田贤三 男士卫衣</a>
+						</dd>
+						<dd class="dl_pm_price">
+							<span>
+								<i>￥</i>
+								2899
+							</span>
+						
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>-->
+		<!--最近浏览end-->
+		<!--<div class="bgf padBottom_40">
+			<div class="search-like"></div>
+		</div>
+		<div class="bgf">
+			<div class="search-other clearfix">
+				<div class="searchInput fl">
+					<input type="text" class="typeInput ac_input"/>
+				</div>
+				<div class="nbtn fl">
+					<a href="" class="nbtn01">搜索</a>
+				</div>
+			</div>
+		</div>-->
+	</div>
+	<!--商品列表end-->
+	<!--底部-->
+	<include file="__VIEW__/Common/footer"/>
+	<!--底部end-->
+</body>
+</html>

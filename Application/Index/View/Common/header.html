@@ -1,0 +1,120 @@
+	<link rel="stylesheet" type="text/css" href="__ROOT__/Public/Index/css/common.css"/>
+	<script src="__ROOT__/Public/Index/js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__ROOT__/Public/Index/js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<!--头部广告-->
+	<div class="" style="background:url(__ROOT__/Public/Index/images/150921dt.jpg) no-repeat center top; width:100%; height:50px; display:none;">
+	</div>
+	<!--头部广告end-->
+	<!--头部-->
+	<div class="header">
+		<div class="top-bar">
+			<div class="top-bar-con clearfix">
+				<a href="{|U:'Cart/index'}" class="turl cart fr">
+					<if value="$_SESSION.cart.total_rows">
+					<b></b>购物车<span id="cat">({$_SESSION.cart.total_rows})</span>
+					<else/>
+					<b></b>购物车<span id="cat">(0)</span>
+					</if>
+				</a>
+				<span class="turlb fr">|</span>
+				<a href="" class="fr turl">
+					客户服务
+					<i class="harrow"></i>
+				</a>
+				<a href="" class="fr turl">
+					我的寺库
+					<i class="harrow"></i>
+				</a>
+				<a href="{|U:'Personal/order'}" class="fr turl">
+					我的订单					
+				</a>
+				<span class="turlb fr">|</span>
+				<span class="turl Chead-welcome fr">
+					欢迎光临寺库 &nbsp;{$_SESSION['uemail']}
+					<if value="!$_SESSION['uemail']&&!$_SESSION['uid']">
+					<a href="{|U:'Member/login'}">请登录</a>
+					<a href="{|U:'Member/register'}">免费注册</a>
+					<else/>
+					<a href="{|U:'Member/out'}">退出</a>
+					</if>
+					
+				</span>
+			</div>
+			<div class="Chead-logo">
+				<div style="position: absolute;right: 5px;top: 15px; width:120px; height:100px;">
+					<div style="style="cursor: hand;background:url(about:blank); position:absolute; top:0px; width:120px; height:100px; z-index:1; visibility: visible; text-align:center;"">
+						<a href="__ROOT__" style="display:block;background:url(about:blank); width:179px; height:123px;">
+							<img src="__ROOT__/Public/Index/images/logogif_1012.gif" width="120" height="100" alt="" style="position:absolute; top:0; left:0;right:0px"  />
+						</a>
+					</div>
+				</div>
+				<a href="__ROOT__" class="logo"></a>
+			</div>
+		</div>
+		<div class="search-box">
+			<div class="serach-con clearfix">
+				<div type="text" class="search-input fl"/>
+					<input type="" class="typeInput ac_input" id="" value="" style="color: rgb(102, 102, 102);"/>
+				</div>
+					<div class="nbtn fl">
+					<a href="" class="nbtn01">搜索</a>
+				</div>
+			</div>
+			<div class="head_navBar">
+				<a href="">
+					<span>
+						<i>首页</i>
+					</span>
+				</a>
+				<foreach from="$category" value="$v" key="$k">
+					<a href="{|U:'List/index',array('cid'=>$v['cid'])}">
+						<span><i>{$v.cname}</i></span>
+					</a>
+				</foreach>
+			</div>
+		</div>
+			<div class="float-list">
+				<div class="orderDivMain">
+					<a href="">
+						全部奢品
+						<i></i>
+					</a>
+				</div>
+				<div class="orderDivId" id="daohang">
+					<foreach from="$category" value="$v" key="$k">
+					<dl class="<if value="$k%2!=0">odd</if>" >
+						<dt >
+							<strong><a href="{|U:'List/index',array('cid'=>$v['cid'])}">{$v.cname}</a></strong>
+							
+							<p>
+								<list from="$category[$k]['son']" name="$n" row="3">
+								<a href="{|U:'List/index',array('cid'=>$n['cid'])}">{$n.cname}</a>
+								</list>
+							</p>
+							
+						</dt>
+						
+						<dd style="top: -2px;">
+							<ul>
+								<li>
+									<strong>分类</strong>
+									<div class="float-list-cont">
+										<foreach from="$category[$k]['son']" value="$vv" key="$kk">
+										<a href="{|U:'List/index',array('cid'=>$vv['cid'])}">
+											{$vv.cname}
+											<em>|</em>
+										</a>
+										</foreach>
+									</div>
+								</li>
+
+							</ul>
+						</dd>
+					</dl>
+					</foreach>
+				</div>
+			</div>
+	</div>
+	<!--头部end-->
